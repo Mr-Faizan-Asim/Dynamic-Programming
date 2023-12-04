@@ -35,6 +35,20 @@ var uniquePaths = (m,n,memos={})=>{
     memos[key] =  uniquePaths(m-1,n,memos)+uniquePaths(m,n-1,memos);
     return memos[key];
 };
+// Target Sum
+const TargetSum = function(target,numbers){
+    if(target === 0) return true;
+    if(target < 0 ) return false;
+    for(let nums of numbers)
+    {
+        const remainder = target - nums;
+        if(TargetSum(remainder,numbers) === true){
+            return true;
+        }
+    }
+    return false;
+};
+
 
 console.log(fibWithMem(6));
 console.log(fib(3));
@@ -42,3 +56,4 @@ console.log(fib(4));
 //console.log(fib(50)); //The Program become very slow at it. 
 console.log(fibWithMem(50));
 console.log(gridTravel(50,18));
+console.log(TargetSum(7,[5,4,3,7]))
