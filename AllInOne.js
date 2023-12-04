@@ -25,6 +25,16 @@ const  gridTravel = (m,n,memos={})=>{
     memos[key] =  gridTravel(m-1,n,memos)+gridTravel(m,n-1,memos);
     return memos[key];
 }
+// Leet Code Problem Link = "https://leetcode.com/problems/unique-paths"
+
+var uniquePaths = (m,n,memos={})=>{
+    const key = m + "," + n;
+    if(key in memos) return memos[key];
+    if(m == 0 || n == 0) return 0;
+    if(m == 1 && n == 1) return 1;
+    memos[key] =  uniquePaths(m-1,n,memos)+uniquePaths(m,n-1,memos);
+    return memos[key];
+};
 
 console.log(fibWithMem(6));
 console.log(fib(3));
